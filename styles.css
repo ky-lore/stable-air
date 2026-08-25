@@ -1459,3 +1459,35 @@ h1,h2,h3{overflow-wrap:break-word}
 /* Ticket depth via filter (box-shadow is clipped by the notch mask) */
 .cpn{box-shadow:none;filter:drop-shadow(0 16px 30px rgba(20,4,45,.42))}
 .cpn:hover{filter:drop-shadow(0 26px 46px rgba(20,4,45,.55))}
+
+/* --- Van "drives in" from the right when the Leading the Charge section scrolls in --- */
+.truckband{overflow:hidden}
+.tb-truck{overflow:visible}
+.van-drivein{transform:translateX(140%) rotate(1.2deg);opacity:0;
+  transition:transform 1.2s cubic-bezier(.22,1.12,.36,1), opacity .5s ease}
+.van-drivein.in{transform:translateX(0) rotate(0);opacity:1}
+@media(prefers-reduced-motion:reduce){
+  .van-drivein{transition:opacity .4s;transform:none;opacity:0}
+  .van-drivein.in{transform:none;animation:none}
+}
+
+/* ── Heavily branded Google map (gold frame + purple-tinted dark map + mascot pin) ── */
+.map-branded{position:relative;border:0;padding:3px;border-radius:20px;overflow:hidden;
+  background:linear-gradient(160deg,#FFF0B8,#FFD24D 45%,#E0980F);
+  box-shadow:0 24px 52px rgba(20,4,45,.42)}
+.map-branded .map-inner{position:relative;border-radius:17px;overflow:hidden;background:#160433;line-height:0}
+.map-branded iframe{width:100%;height:360px;border:0;display:block;
+  filter:grayscale(.25) invert(.90) hue-rotate(185deg) saturate(1.25) contrast(.9) brightness(1.03);
+  transition:filter .55s ease}
+.map-branded:hover iframe{filter:none}
+.map-branded .map-pin{position:absolute;top:14px;left:14px;z-index:3;pointer-events:none;
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(160deg,#FFF0B8,#FFD24D 45%,#E0980F);box-shadow:0 8px 20px rgba(224,152,15,.5)}
+.map-branded .map-pin img{width:72%;height:72%;object-fit:contain}
+.map-branded .map-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;pointer-events:none;
+  display:flex;align-items:center;gap:10px;padding:18px;color:#fff;font-weight:600;font-size:14px;
+  background:linear-gradient(0deg,rgba(20,4,45,.95) 0%,rgba(20,4,45,.5) 62%,transparent)}
+.map-branded .map-cap svg{width:16px;height:16px;stroke:#FFD24D;fill:none;stroke-width:2;flex:none}
+.map-branded .map-cap .hint{margin-left:auto;font-weight:600;font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:#FFD24D;opacity:.9}
+@media(max-width:560px){.map-branded .map-cap .hint{display:none}}
