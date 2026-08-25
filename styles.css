@@ -1535,8 +1535,10 @@ body{overflow-x:clip}
 :root{--gold-grad:linear-gradient(160deg,#FFF0B8,#FFD24D 45%,#E0980F)}
 
 /* ── "Stable Air Way" card: light-gold high-contrast bg + centered pill ── */
-.cmp-col.premium{background:linear-gradient(160deg,#FFF7DC,#FFD86A 55%,#F2BE45);
-  border:1.5px solid #E0980F;color:#1A0542;overflow:visible}
+.cmp-col.premium{background:linear-gradient(160deg,#FFF7DC,#FFD86A 55%,#F2BE45)!important;
+  border:1.5px solid #E0980F!important;color:#1A0542;overflow:visible;
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+  box-shadow:0 30px 60px rgba(224,152,15,.28)!important}
 .cmp-col.premium h3,.cmp-col.premium .cmp-tag{color:#1A0542}
 .cmp-col.premium li{color:#2A0A55}
 .cmp-col.premium li svg{stroke:#1A0542}
@@ -1545,3 +1547,14 @@ body{overflow-x:clip}
 /* centered "The Stable Air Way" pill, deep purple for contrast on gold */
 .cmp-col.premium .badge-best{position:absolute;top:-13px;left:50%;right:auto;
   transform:translateX(-50%);z-index:2;background:#1A0542;color:#FFD24D;white-space:nowrap}
+
+/* ── Playful: mascot peeks out from behind the hero form ── */
+.leadcard-stage{position:relative}
+.leadcard-stage .leadcard{position:relative;z-index:1}
+.leadcard-stage .peek-horse{position:absolute;left:50%;transform:translateX(-50%);
+  top:-92px;width:min(220px,58%);z-index:0;pointer-events:none;
+  filter:drop-shadow(0 14px 22px rgba(0,0,0,.5));
+  animation:peekIn .8s .3s cubic-bezier(.22,1.12,.36,1) both}
+@keyframes peekIn{from{opacity:0;transform:translate(-50%,26px)}to{opacity:1;transform:translate(-50%,0)}}
+@media(max-width:940px){.leadcard-stage .peek-horse{display:none}}
+@media(prefers-reduced-motion:reduce){.leadcard-stage .peek-horse{animation:none}}
