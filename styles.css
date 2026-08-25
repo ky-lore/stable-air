@@ -1498,3 +1498,27 @@ h1,h2,h3{overflow-wrap:break-word}
 /* belt-and-suspenders horizontal-overflow guard */
 html{overflow-x:clip}
 body{overflow-x:clip}
+
+/* ── Mobile fixes (audit round 2) ── */
+
+/* 1) Truck/van must always show on mobile (drive-in could leave it off-screen) */
+@media(max-width:860px){
+  .van-drivein{transform:none!important;opacity:1!important}
+  .truckband .tb-truck{max-width:440px;margin:0 auto}
+}
+
+/* 2) Announcement/utility bar: even, centered, wraps cleanly on small screens */
+@media(max-width:720px){
+  .utility .wrap{flex-wrap:wrap;justify-content:center;height:auto;min-height:0;
+    padding:8px 16px;gap:3px 18px;text-align:center}
+  .utility .u-left{gap:18px}
+}
+@media(max-width:480px){ .utility .u-offer{display:none} }
+
+/* 3) Stable Air Difference card: big mascot logo overlay on its background */
+.cmp-col.premium{overflow:hidden}
+.cmp-col.premium::before{content:"";position:absolute;right:-46px;bottom:-46px;
+  width:min(320px,66%);aspect-ratio:1;background:url("assets/mascot.svg") center/contain no-repeat;
+  opacity:.10;z-index:0;pointer-events:none}
+.cmp-col.premium .badge-best,.cmp-col.premium .cmp-tag,
+.cmp-col.premium h3,.cmp-col.premium ul{position:relative;z-index:1}
