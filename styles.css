@@ -1522,3 +1522,26 @@ body{overflow-x:clip}
   opacity:.10;z-index:0;pointer-events:none}
 .cmp-col.premium .badge-best,.cmp-col.premium .cmp-tag,
 .cmp-col.premium h3,.cmp-col.premium ul{position:relative;z-index:1}
+
+/* ── Mobile/tablet: "Owner-led" badge sits below the truck instead of covering it ── */
+@media(max-width:900px){
+  .story-media{display:flex;flex-direction:column}
+  .story-media .m-badge{position:static;left:auto;right:auto;bottom:auto;margin-top:18px;max-width:none}
+  .story-media:has(.m-truck) .m-badge{bottom:auto}
+  .story-media .m-main.m-truck{min-height:200px}
+}
+
+/* ── Fix: define the missing gold-gradient token (accordion numbers + toggle were vanishing on open) ── */
+:root{--gold-grad:linear-gradient(160deg,#FFF0B8,#FFD24D 45%,#E0980F)}
+
+/* ── "Stable Air Way" card: light-gold high-contrast bg + centered pill ── */
+.cmp-col.premium{background:linear-gradient(160deg,#FFF7DC,#FFD86A 55%,#F2BE45);
+  border:1.5px solid #E0980F;color:#1A0542;overflow:visible}
+.cmp-col.premium h3,.cmp-col.premium .cmp-tag{color:#1A0542}
+.cmp-col.premium li{color:#2A0A55}
+.cmp-col.premium li svg{stroke:#1A0542}
+/* mascot overlay kept inside the card bounds (no clip needed) */
+.cmp-col.premium::before{right:0;bottom:0;width:min(240px,52%);opacity:.12}
+/* centered "The Stable Air Way" pill, deep purple for contrast on gold */
+.cmp-col.premium .badge-best{position:absolute;top:-13px;left:50%;right:auto;
+  transform:translateX(-50%);z-index:2;background:#1A0542;color:#FFD24D;white-space:nowrap}
