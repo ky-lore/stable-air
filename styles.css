@@ -1551,10 +1551,10 @@ body{overflow-x:clip}
 /* ── Playful: mascot peeks out from behind the hero form ── */
 .leadcard-stage{position:relative}
 .leadcard-stage .leadcard{position:relative;z-index:1}
-.leadcard-stage .peek-horse{position:absolute;left:50%;transform:translateX(-50%);
-  top:-92px;width:min(220px,58%);z-index:0;pointer-events:none;
+.leadcard-stage .peek-horse{position:absolute;right:52px;left:auto;
+  top:-118px;width:min(220px,58%);z-index:0;pointer-events:none;
   filter:drop-shadow(0 14px 22px rgba(0,0,0,.5));
   animation:peekIn .8s .3s cubic-bezier(.22,1.12,.36,1) both}
-@keyframes peekIn{from{opacity:0;transform:translate(-50%,26px)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes peekIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:940px){.leadcard-stage .peek-horse{display:none}}
 @media(prefers-reduced-motion:reduce){.leadcard-stage .peek-horse{animation:none}}
